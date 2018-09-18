@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 2080649851}
   - component: {fileID: 2080649850}
   - component: {fileID: 2080649852}
+  - component: {fileID: 2080649853}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Arm
@@ -280,6 +281,22 @@ MonoBehaviour:
   Arm: {fileID: 2080649849}
   pos: {x: 1.5, y: 0, z: 0}
   startPos: {x: -1.5, y: 0, z: 0}
+  BoogArm: {fileID: 21300000, guid: 81636194114845e439375a8c3d35984e, type: 3}
+  BoogArm2: {fileID: 21300000, guid: ae8f858bc776a5141a41055bad7e9e53, type: 3}
+  BoogArm3: {fileID: 21300000, guid: 595aff6421ca867499bf3fd25aa5179d, type: 3}
+  BoogArm4: {fileID: 21300000, guid: 813fafb893c9a2843be19e2159420629, type: 3}
+--- !u!114 &2080649853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2080649849}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e6730d84ed0974088ce14110ff8323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoogerArm: {fileID: 21300000, guid: 81636194114845e439375a8c3d35984e, type: 3}
 --- !u!1 &2094543403
 GameObject:
   m_ObjectHideFlags: 0

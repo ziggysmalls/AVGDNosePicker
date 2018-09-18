@@ -7,7 +7,13 @@ public class PlayerController : MonoBehaviour
 	public GameObject Arm;
 	public Vector3 pos;
 	public Vector3 startPos;
-	int clickCount = 0;
+    public Sprite BoogArm;
+    public Sprite BoogArm2;
+    public Sprite BoogArm3;
+    public Sprite BoogArm4;
+    int clickCount = 0;
+    int nosePickCount = 0;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -17,10 +23,32 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+        if(nosePickCount == 1)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = BoogArm;
+        }
+
+        if(nosePickCount == 2)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = BoogArm2;
+        }
+
+        if(nosePickCount == 3)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = BoogArm3;
+
+
+        }
+        if(nosePickCount >= 4)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = BoogArm4;
+        }
+
 		if (Input.GetButtonDown ("Fire1") && clickCount == 0  ) 
 		{
 			transform.Translate(pos);
-			clickCount++;
+            nosePickCount++;
+            clickCount++;
 		}
 		if(Input.GetButtonDown("Fire2") && clickCount == 1)
 		{

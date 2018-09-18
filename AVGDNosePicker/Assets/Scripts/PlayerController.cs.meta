@@ -3,7 +3,12 @@ guid: 9f8de544f3b3cf042b83a9ac3a6ae801
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Arm: {instanceID: 0}
+  - BoogArm: {fileID: 21300000, guid: ae8f858bc776a5141a41055bad7e9e53, type: 3}
+  - BoogArm2: {fileID: 21300000, guid: ae8f858bc776a5141a41055bad7e9e53, type: 3}
+  - BoogArm3: {fileID: 21300000, guid: 595aff6421ca867499bf3fd25aa5179d, type: 3}
+  - BoogArm4: {fileID: 21300000, guid: 813fafb893c9a2843be19e2159420629, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
