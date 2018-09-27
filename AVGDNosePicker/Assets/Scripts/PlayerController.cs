@@ -13,11 +13,14 @@ public class PlayerController : MonoBehaviour
     public Sprite BoogArm4;
     int clickCount = 0;
     int nosePickCount = 0;
+    public AudioEvent boogerAudioEvent;
+    Vector3 playerSpawnPoint;
 
 	// Use this for initialization
 	void Start () 
 	{
 		
+        playerSpawnPoint = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -26,22 +29,29 @@ public class PlayerController : MonoBehaviour
         if(nosePickCount == 1)
         {
             this.GetComponent<SpriteRenderer>().sprite = BoogArm;
+           boogerAudioEvent.Play(playerSpawnPoint);
         }
 
         if(nosePickCount == 2)
         {
             this.GetComponent<SpriteRenderer>().sprite = BoogArm2;
+            boogerAudioEvent.Play(playerSpawnPoint);
+           
+        
         }
 
         if(nosePickCount == 3)
         {
             this.GetComponent<SpriteRenderer>().sprite = BoogArm3;
-
+           boogerAudioEvent.Play(playerSpawnPoint);
+        
 
         }
         if(nosePickCount >= 4)
         {
             this.GetComponent<SpriteRenderer>().sprite = BoogArm4;
+         boogerAudioEvent.Play(playerSpawnPoint);
+        
         }
 
 		if (Input.GetButtonDown ("Fire1") && clickCount == 0  ) 

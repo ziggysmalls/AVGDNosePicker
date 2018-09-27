@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -137,6 +138,19 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b620b0ca26623439db1c5955125974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundAudio: {fileID: 11400000, guid: a6a4bf74ae90c1b40817b88915535ae7, type: 2}
+  dontknowhyitneedsitbutokay: {x: 0, y: 0, z: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -200,7 +214,6 @@ GameObject:
   - component: {fileID: 2080649851}
   - component: {fileID: 2080649850}
   - component: {fileID: 2080649852}
-  - component: {fileID: 2080649853}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Arm
@@ -285,18 +298,7 @@ MonoBehaviour:
   BoogArm2: {fileID: 21300000, guid: ae8f858bc776a5141a41055bad7e9e53, type: 3}
   BoogArm3: {fileID: 21300000, guid: 595aff6421ca867499bf3fd25aa5179d, type: 3}
   BoogArm4: {fileID: 21300000, guid: 813fafb893c9a2843be19e2159420629, type: 3}
---- !u!114 &2080649853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2080649849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5e6730d84ed0974088ce14110ff8323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoogerArm: {fileID: 21300000, guid: 81636194114845e439375a8c3d35984e, type: 3}
+  boogerAudioEvent: {fileID: 11400000, guid: 33e86c0230fcef84293996b117ae021b, type: 2}
 --- !u!1 &2094543403
 GameObject:
   m_ObjectHideFlags: 0
