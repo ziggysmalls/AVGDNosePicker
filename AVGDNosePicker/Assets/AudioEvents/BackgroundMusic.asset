@@ -15,26 +15,26 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: ebb84c367ea0a2e4f8756292635b4f13, type: 3}
     delay:
-      minValue: 0.24855497
-      maxValue: 0.29230994
+      minValue: 0
+      maxValue: 0
     priority:
       minValue: 0
       maxValue: 0
     volume:
-      minValue: 0.14319807
-      maxValue: 0.49721554
+      minValue: 0.1851142
+      maxValue: 0.42642844
     pitch:
-      minValue: 0
-      maxValue: 0
+      minValue: 1.2177362
+      maxValue: 1.3558341
     spatialBlend:
-      minValue: -0.15910898
-      maxValue: 0
+      minValue: -1
+      maxValue: -1
     reverbZoneMix:
       minValue: 0
       maxValue: 0
     dopplerLevel:
       minValue: 0
-      maxValue: 0.35799518
+      maxValue: 0
     spread:
       minValue: 0
-      maxValue: 21.479712
+      maxValue: 0

@@ -10,12 +10,12 @@ public class LevelManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		
+		backgroundAudio.Play(dontknowhyitneedsitbutokay);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		backgroundAudio.Play(dontknowhyitneedsitbutokay);
+		
 	}
 }

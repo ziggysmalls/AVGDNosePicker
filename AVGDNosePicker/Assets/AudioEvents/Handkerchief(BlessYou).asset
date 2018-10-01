@@ -21,11 +21,11 @@ MonoBehaviour:
       minValue: 0
       maxValue: 0
     volume:
-      minValue: 0
-      maxValue: 0
+      minValue: 0.6441649
+      maxValue: 0.84270877
     pitch:
-      minValue: 0
-      maxValue: 0
+      minValue: 1.3324507
+      maxValue: 1.6501207
     spatialBlend:
       minValue: 0
       maxValue: 0

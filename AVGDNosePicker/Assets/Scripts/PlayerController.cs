@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         if(nosePickCount == 1)
         {
             this.GetComponent<SpriteRenderer>().sprite = BoogArm;
-           boogerAudioEvent.Play(playerSpawnPoint);
+           
         }
 
         if(nosePickCount == 2)
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetButtonDown("Fire2") && clickCount == 1)
 		{
 			transform.Translate(startPos);
+            boogerAudioEvent.Play(playerSpawnPoint);
 			clickCount--;
 		}
 
