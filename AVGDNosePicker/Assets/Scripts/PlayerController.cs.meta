@@ -8,7 +8,26 @@ MonoImporter:
   - BoogArm: {fileID: 21300000, guid: ae8f858bc776a5141a41055bad7e9e53, type: 3}
   - BoogArm2: {fileID: 21300000, guid: ae8f858bc776a5141a41055bad7e9e53, type: 3}
   - BoogArm3: {fileID: 21300000, guid: 595aff6421ca867499bf3fd25aa5179d, type: 3}
-  - BoogArm4: {fileID: 21300000, guid: 813fafb893c9a2843be19e2159420629, type: 3}
+  - BoogArm4: {fileID: 21300000, guid: ee8fdf5e5e7ce8d4b905cdf43fca75fc, type: 3}
+  - BoogArm5: {fileID: 21300000, guid: 5a6a04c0db81f3b45869a377711c8e5f, type: 3}
+  - BoogArm6: {fileID: 21300000, guid: 4ee09bc469947a544beb0098a59fa94c, type: 3}
+  - BoogArm7: {fileID: 21300000, guid: bb8bf4726cf1df944acd29321622b022, type: 3}
+  - BoogArm8: {fileID: 21300000, guid: 8cdc2b9a1d95e1849ab85cfd0a51d227, type: 3}
+  - boogerAudioEvent: {fileID: 11400000, guid: 33e86c0230fcef84293996b117ae021b, type: 2}
+  - booger2AudioEvent: {fileID: 11400000, guid: c663fa5433e39a5498afb14a1335a1ef,
+      type: 2}
+  - booger3AudioEvent: {fileID: 11400000, guid: 4846535b4e5f99e46bc49e22520f605b,
+      type: 2}
+  - booger4AudioEvent: {fileID: 11400000, guid: 69024aa4804c2e04fb0f6001ed579d32,
+      type: 2}
+  - booger5AudioEvent: {fileID: 11400000, guid: 8875721bfaa06f64fa4fa2dd60be183b,
+      type: 2}
+  - booger6AudioEvent: {fileID: 11400000, guid: 39dca9bc826adeb4692b2b48dbab9211,
+      type: 2}
+  - booger7AudioEvent: {fileID: 11400000, guid: 79a278564eb6a774798bf196f63ed221,
+      type: 2}
+  - booger8AudioEvent: {fileID: 11400000, guid: e90bfd90bcfd7244da1ac48ed9852112,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

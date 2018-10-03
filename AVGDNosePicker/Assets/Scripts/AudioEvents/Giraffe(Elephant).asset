@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2368f99c31b241146a214bb6d9303408, type: 3}
+  m_Name: Giraffe(Elephant)
+  m_EditorClassIdentifier: 
+  data:
+    audioClips:
+    - {fileID: 8300000, guid: 014642687fedc13449fab545e13b24c7, type: 3}
+    delay:
+      minValue: 0
+      maxValue: 0
+    priority:
+      minValue: 0
+      maxValue: 0
+    volume:
+      minValue: 0.6132803
+      maxValue: 0.7809395
+    pitch:
+      minValue: 1.2883298
+      maxValue: 1.7648349
+    spatialBlend:
+      minValue: 0
+      maxValue: 0
+    reverbZoneMix:
+      minValue: 0
+      maxValue: 0
+    dopplerLevel:
+      minValue: 0
+      maxValue: 0
+    spread:
+      minValue: 0
+      maxValue: 0
