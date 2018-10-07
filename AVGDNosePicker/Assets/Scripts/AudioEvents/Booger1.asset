@@ -21,14 +21,14 @@ MonoBehaviour:
       minValue: 0
       maxValue: 0
     volume:
-      minValue: 0
-      maxValue: 0
+      minValue: 0.50506186
+      maxValue: 0.55455565
     pitch:
-      minValue: 0
-      maxValue: 0
+      minValue: 1.007874
+      maxValue: 1.079865
     spatialBlend:
-      minValue: 0
-      maxValue: 0
+      minValue: -1
+      maxValue: -1
     reverbZoneMix:
       minValue: 0
       maxValue: 0

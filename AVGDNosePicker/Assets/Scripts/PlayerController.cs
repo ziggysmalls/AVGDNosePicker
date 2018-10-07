@@ -4,112 +4,157 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour 
 {
-	public GameObject Arm;
-	public Vector3 pos;
+	public GameObject arm;
+	public Vector3 pickPos;
+    public Vector3 armStartEuler;
 	public Vector3 startPos;
-    public Sprite BoogArm;
-    public Sprite BoogArm2;
-    public Sprite BoogArm3;
-    public Sprite BoogArm4;
-    public Sprite BoogArm5;
-    public Sprite BoogArm6;
-    public Sprite BoogArm7;
-    public Sprite BoogArm8;
+    public List<Sprite> boogers;
     public AudioEvent boogerAudioEvent;
-    int clickCount = 0;
-    int nosePickCount = 0;
-    Vector3 playerSpawnPoint;
-    //   public HoldButton but;
-//    HoldButton values = FindObjectOfType<HoldButton>();
+    public SpriteRenderer spriteRenderer;
+    public int pickMaxValue = 5;
+    public int pickCurrentValue;
 
-    // Use this for initialization
-    void Start () 
+    public AAnimation brainAnimation;
+    public AAnimation deathAnimation;
+
+    private AAnimation currentAnimation;
+ 
+    [System.Serializable]
+    public class AAnimation
+    {
+        public List<Sprite> sprites;
+        public int currentFrameIndex;
+        public float interval;
+        public float timer;
+        public string messageOnEnd;
+        public bool isPlaying;
+    }
+
+	// Use this for initialization
+	void Start () 
 	{
-		
-        playerSpawnPoint = transform.position;
+        spriteRenderer = arm.GetComponent<SpriteRenderer>();
+        pickPos = new Vector3(6.38f,-3.65f,0);
+		startPos = arm.transform.position;
+        armStartEuler = arm.transform.eulerAngles;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-        if(nosePickCount == 1)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm;
+        // if(nosePickCount == 1)
+        // {
+        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm;
            
-        }
+        // }
 
-        if(nosePickCount == 2)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm2;
-
+        // if(nosePickCount == 2)
+        // {
+        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm2;
+            
            
         
-        }
+        // }
 
-        if(nosePickCount == 3)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm3;
-
+        // if(nosePickCount == 3)
+        // {
+        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm3;
+          
         
 
-        }
-        if(nosePickCount == 4)
+        // }
+        // if(nosePickCount >= 4)
+        // {
+        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm4;
+         
+        // }
+
+		// if (Input.GetButtonDown ("Fire1") && clickCount == 0  ) 
+		// {
+		// 	transform.Translate(pos);
+        //     nosePickCount++;
+        //     clickCount++;
+		// }
+		// if(Input.GetButtonDown("Fire2") && clickCount == 1)
+		// {
+		// 	transform.Translate(startPos);
+        //     boogerAudioEvent.Play(playerSpawnPoint);
+		// 	clickCount--;
+		// }
+
+        if (GameMessages.GetMessage("py",true) && currentAnimation == null)
         {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm4;
+            
 
-        
+            arm.transform.position = pickPos;
+            boogerAudioEvent.Play(Vector3.zero);
+            spriteRenderer.sprite = boogers[Random.Range(1,boogers.Count)];
+
+            if (pickCurrentValue >= pickMaxValue)
+            {
+                currentAnimation = brainAnimation;
+                currentAnimation.isPlaying = true;
+                GameMessages.AddMessage("pb");
+            }
+
+
+            pickCurrentValue++;
+
         }
-        if (nosePickCount == 5)
+
+        if (GameMessages.GetMessage("pn",true) && currentAnimation == null)
         {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm5;
-
-
+            arm.transform.position = startPos;
         }
-        if (nosePickCount == 6)
+
+        //Animate
+        if (currentAnimation != null)
         {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm6;
+            currentAnimation.timer += Time.deltaTime;
+            if (currentAnimation.timer > currentAnimation.interval && currentAnimation.isPlaying)
+            {
+                currentAnimation.timer = 0;
+                currentAnimation.currentFrameIndex++;
+
+                if (currentAnimation.currentFrameIndex < currentAnimation.sprites.Count - 1)
+                    spriteRenderer.sprite = currentAnimation.sprites[currentAnimation.currentFrameIndex];
+                else
+                {
+                    GameMessages.AddMessage(currentAnimation.messageOnEnd);
+                    currentAnimation.isPlaying = false;
+                    currentAnimation.currentFrameIndex = 0;
+                }
+
+           //     brainPickAnimationFrameChangeTimer = 0;
+           //     currentBrainFrameIndex++;
+           //     spriteRenderer.sprite = brains[currentBrainFrameIndex];
+            }
 
 
+            //Death Event
+            if (GameMessages.GetMessage(brainAnimation.messageOnEnd,true))
+            {
+
+                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+                gameObject.transform.GetChild(1).transform.eulerAngles = Vector3.zero;
+                gameObject.transform.GetChild(1).transform.position =  gameObject.transform.GetChild(0).transform.position;
+                currentAnimation = deathAnimation;
+                currentAnimation.isPlaying = true;
+            }
+
+            if (GameMessages.GetMessage("resetPlayerController",true))
+            {
+                spriteRenderer.sprite = boogers[0];
+                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+                gameObject.transform.GetChild(1).transform.eulerAngles = armStartEuler;
+                gameObject.transform.GetChild(1).transform.position = startPos;
+                pickCurrentValue = 0;
+                GameMessages.GetMessage("dd",true);
+                GameMessages.GetMessage("pb",true);
+                currentAnimation = null;
+
+            }
         }
-        if (nosePickCount == 7)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm7;
-
-
-        }
-        if (nosePickCount >= 8)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = BoogArm8;
-
-
-        }
-
-//        HoldButton butScript = GetComponent<HoldButton>(); // may cause issues
-
-
-        //if(but.GetComponent<HoldButton>().requiredHoldTime)                   butScript.GetComponent<HoldButton>().pointerDownTimer >= butScript.GetComponent<HoldButton>().requiredHoldTime
-
-
-
-
-
-        if (Input.GetButtonDown("Fire2") && clickCount == 1)
-		{
-			transform.Translate(startPos);
-            boogerAudioEvent.Play(playerSpawnPoint);
-			clickCount--;
-		}
-
-
-		if (Input.GetButtonDown ("Fire1") && clickCount == 0   ) //&& (GameObject.Find("Button").GetComponent<HoldButton>().pointerDownTimer >= GameObject.Find("Button").GetComponent<HoldButton>().requiredHoldTime)) 
-		{
-
-            transform.Translate(pos);
-            nosePickCount++;
-            clickCount++;
-        }
-
-
 
 	}
 }

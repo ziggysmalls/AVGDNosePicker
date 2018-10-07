@@ -8,29 +8,49 @@ using UnityEngine.UI;
 public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 
-    private bool pointerDown;
-    public float pointerDownTimer;
-
-    [SerializeField]
-    public float requiredHoldTime;
-
-    public UnityEvent onLongClick;
-
-    [SerializeField]
+    private float timerSpeed;
+    private bool isPointerDown;
+    private float requiredHoldTimeCurrent;
+    public float requiredHoldTimeMin;
+    public float requiredHoldTimeMax;
+    private UnityEvent onLongClick;
     private Image fillImage;
+    private Image indicator;
 
 
+    public void Start()
+    {
+        requiredHoldTimeCurrent = 0;
+        fillImage = gameObject.transform.GetChild(1).GetComponent<Image>();
+        indicator = gameObject.transform.GetChild(0).GetComponent<Image>();
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        pointerDown = true;
-        Debug.Log("OnPointerDown");
+        if (GameMessages.GetMessage("pb",false))
+            return;
+
+        timerSpeed = Random.Range(0.75f,2.75f);
+        requiredHoldTimeMin = Random.Range(0.6f,0.9f);
+        indicator.fillAmount = requiredHoldTimeMin;
+        isPointerDown = true;
+        GameMessages.AddMessage("pn");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Reset();
-        Debug.Log("OnPointerUp");
+        isPointerDown = false;
+
+    
+        Debug.Log(requiredHoldTimeCurrent); 
+        if ( requiredHoldTimeCurrent >= requiredHoldTimeMin && requiredHoldTimeCurrent <= requiredHoldTimeMax)
+        {
+           GameMessages.AddMessage("py");
+        }
+
+        requiredHoldTimeCurrent = 0;
+        fillImage.fillAmount =  requiredHoldTimeCurrent / requiredHoldTimeCurrent;
+
     }
 
 
@@ -43,28 +63,20 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 	
 	// Update is called once per frame
-	private void Update () {
-        if (pointerDown)
-        {
-            pointerDownTimer += Time.deltaTime;
-            if (pointerDownTimer >= requiredHoldTime)
-            {
-                if (onLongClick != null)
-                    onLongClick.Invoke();
-
-                Reset();
-            }
-            fillImage.fillAmount = pointerDownTimer / requiredHoldTime;
-        }
-
-    }
-
-
-
-    private void Reset()
+	public void Update () 
     {
-        pointerDown = false;
-        pointerDownTimer = 0;
-        fillImage.fillAmount = pointerDownTimer / requiredHoldTime;
+
+        fillImage.gameObject.SetActive(!GameMessages.GetMessage("pb",false));
+        indicator.gameObject.SetActive(!GameMessages.GetMessage("pb",false));
+        GetComponent<Image>().enabled = !GameMessages.GetMessage("pb",false);
+
+        if (isPointerDown)
+            requiredHoldTimeCurrent+= Time.deltaTime * timerSpeed;
+
+
+        fillImage.fillAmount =  requiredHoldTimeCurrent / 1;    
+        
+          
     }
+
 }
