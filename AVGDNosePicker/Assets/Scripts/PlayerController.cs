@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 armStartEuler;
 	public Vector3 startPos;
     public List<Sprite> boogers;
-    public AudioEvent boogerAudioEvent;
+    public List<AudioEvent> boogerAudioEvent;
     public SpriteRenderer spriteRenderer;
     public int pickMaxValue = 5;
     public int pickCurrentValue;
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public class AAnimation
     {
         public List<Sprite> sprites;
+
         public int currentFrameIndex;
         public float interval;
         public float timer;
@@ -42,52 +43,14 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        // if(nosePickCount == 1)
-        // {
-        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm;
-           
-        // }
-
-        // if(nosePickCount == 2)
-        // {
-        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm2;
-            
-           
-        
-        // }
-
-        // if(nosePickCount == 3)
-        // {
-        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm3;
-          
-        
-
-        // }
-        // if(nosePickCount >= 4)
-        // {
-        //     this.GetComponent<SpriteRenderer>().sprite = BoogArm4;
-         
-        // }
-
-		// if (Input.GetButtonDown ("Fire1") && clickCount == 0  ) 
-		// {
-		// 	transform.Translate(pos);
-        //     nosePickCount++;
-        //     clickCount++;
-		// }
-		// if(Input.GetButtonDown("Fire2") && clickCount == 1)
-		// {
-		// 	transform.Translate(startPos);
-        //     boogerAudioEvent.Play(playerSpawnPoint);
-		// 	clickCount--;
-		// }
+       
 
         if (GameMessages.GetMessage("py",true) && currentAnimation == null)
         {
             
 
             arm.transform.position = pickPos;
-            boogerAudioEvent.Play(Vector3.zero);
+            boogerAudioEvent[Random.Range(1,boogers.Count)].Play(Vector3.zero);
             spriteRenderer.sprite = boogers[Random.Range(1,boogers.Count)];
 
             if (pickCurrentValue >= pickMaxValue)
@@ -125,9 +88,7 @@ public class PlayerController : MonoBehaviour
                     currentAnimation.currentFrameIndex = 0;
                 }
 
-           //     brainPickAnimationFrameChangeTimer = 0;
-           //     currentBrainFrameIndex++;
-           //     spriteRenderer.sprite = brains[currentBrainFrameIndex];
+           
             }
 
 
