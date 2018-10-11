@@ -43,7 +43,19 @@ public class AudioEvent : ScriptableObject
 			}
 		}
 	}
+public void Stop()
+{
+	InitalizePool();
 
+	foreach (AudioSource i in audioSourcePool)
+	{
+		
+		if(i.isPlaying)
+			i.Stop();
+			return;
+		
+	}
+}
 	private void SetData(AudioSource source,bool isPreview)
 	{
 		if (data.audioClips.Length <= 0) return;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -10,7 +11,11 @@ public class PlayerController : MonoBehaviour
 	public Vector3 startPos;
     public List<Sprite> boogers;
     public List<AudioEvent> boogerAudioEvent;
+    public AudioEvent missEvent;
     public SpriteRenderer spriteRenderer;
+    public AudioEvent deathAudioEvent;
+    public AudioEvent backgroundMusic;
+    public AudioEvent DeathBackgroundMusic;
     public int pickMaxValue = 5;
     public int pickCurrentValue;
 
@@ -38,6 +43,7 @@ public class PlayerController : MonoBehaviour
         pickPos = new Vector3(6.38f,-3.65f,0);
 		startPos = arm.transform.position;
         armStartEuler = arm.transform.eulerAngles;
+        backgroundMusic.Play(Vector3.zero);
 	}
 	
 	// Update is called once per frame
@@ -48,10 +54,11 @@ public class PlayerController : MonoBehaviour
         if (GameMessages.GetMessage("py",true) && currentAnimation == null)
         {
             
-
+            
             arm.transform.position = pickPos;
-            boogerAudioEvent[Random.Range(1,boogers.Count)].Play(Vector3.zero);
+        
             spriteRenderer.sprite = boogers[Random.Range(1,boogers.Count)];
+           boogerAudioEvent[boogers.Count - 1].Play(Vector3.zero);
 
             if (pickCurrentValue >= pickMaxValue)
             {
@@ -59,7 +66,7 @@ public class PlayerController : MonoBehaviour
                 currentAnimation.isPlaying = true;
                 GameMessages.AddMessage("pb");
             }
-
+            
 
             pickCurrentValue++;
 
@@ -68,6 +75,8 @@ public class PlayerController : MonoBehaviour
         if (GameMessages.GetMessage("pn",true) && currentAnimation == null)
         {
             arm.transform.position = startPos;
+            missEvent.Play(Vector3.zero);
+            
         }
 
         //Animate
@@ -95,11 +104,16 @@ public class PlayerController : MonoBehaviour
             //Death Event
             if (GameMessages.GetMessage(brainAnimation.messageOnEnd,true))
             {
-
+                
                 gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
                 gameObject.transform.GetChild(1).transform.eulerAngles = Vector3.zero;
                 gameObject.transform.GetChild(1).transform.position =  gameObject.transform.GetChild(0).transform.position;
                 currentAnimation = deathAnimation;
+                deathAudioEvent.Play(Vector3.zero);
+                
+                backgroundMusic.Stop();
+                backgroundMusic = DeathBackgroundMusic;
+                backgroundMusic.Play(Vector3.zero);
                 currentAnimation.isPlaying = true;
             }
 

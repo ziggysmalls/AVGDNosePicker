@@ -386,7 +386,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -401,19 +400,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24b620b0ca26623439db1c5955125974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundAudio: {fileID: 11400000, guid: a6a4bf74ae90c1b40817b88915535ae7, type: 2}
-  dontknowhyitneedsitbutokay: {x: 0, y: 0, z: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -902,20 +888,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ae8f858bc776a5141a41055bad7e9e53, type: 3}
   - {fileID: 21300000, guid: 595aff6421ca867499bf3fd25aa5179d, type: 3}
   - {fileID: 21300000, guid: 813fafb893c9a2843be19e2159420629, type: 3}
-  - {fileID: 21300000, guid: 813fafb893c9a2843be19e2159420629, type: 3}
+  - {fileID: 21300000, guid: 10e91aad76f2c7a47a2bdf1c70b03820, type: 3}
   - {fileID: 21300000, guid: 8cdc2b9a1d95e1849ab85cfd0a51d227, type: 3}
   - {fileID: 21300000, guid: 5a6a04c0db81f3b45869a377711c8e5f, type: 3}
   boogerAudioEvent:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 9230a8344aa3bc14ebcbdc447e9967b4, type: 2}
+  - {fileID: 11400000, guid: 33e86c0230fcef84293996b117ae021b, type: 2}
+  - {fileID: 11400000, guid: a43e6a9de7347924d9c65c4b177920c7, type: 2}
+  - {fileID: 11400000, guid: 4846535b4e5f99e46bc49e22520f605b, type: 2}
+  - {fileID: 11400000, guid: 1b4b7f743403c8443a916a8b717137b3, type: 2}
+  - {fileID: 11400000, guid: 39dca9bc826adeb4692b2b48dbab9211, type: 2}
+  - {fileID: 11400000, guid: e90bfd90bcfd7244da1ac48ed9852112, type: 2}
+  - {fileID: 11400000, guid: b9b029066d047b1428e010bca9bb13b6, type: 2}
+  missEvent: {fileID: 11400000, guid: 263af11c1acda23469814276eddd857a, type: 2}
   spriteRenderer: {fileID: 0}
-  pickMaxValue: 7
+  deathAudioEvent: {fileID: 11400000, guid: 79a278564eb6a774798bf196f63ed221, type: 2}
+  backgroundMusic: {fileID: 11400000, guid: a6a4bf74ae90c1b40817b88915535ae7, type: 2}
+  DeathBackgroundMusic: {fileID: 11400000, guid: cd62dedde1b540141bd44b0b2c7403f4,
+    type: 2}
+  pickMaxValue: 8
   pickCurrentValue: 0
   brainAnimation:
     sprites:

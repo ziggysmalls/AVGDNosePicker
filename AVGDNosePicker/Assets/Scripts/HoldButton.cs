@@ -18,6 +18,7 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Image indicator;
 
 
+
     public void Start()
     {
         requiredHoldTimeCurrent = 0;
@@ -35,6 +36,7 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         indicator.fillAmount = requiredHoldTimeMin;
         isPointerDown = true;
         GameMessages.AddMessage("pn");
+     
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -42,7 +44,7 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         isPointerDown = false;
 
     
-        Debug.Log(requiredHoldTimeCurrent); 
+        
         if ( requiredHoldTimeCurrent >= requiredHoldTimeMin && requiredHoldTimeCurrent <= requiredHoldTimeMax)
         {
            GameMessages.AddMessage("py");
@@ -50,18 +52,13 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
         requiredHoldTimeCurrent = 0;
         fillImage.fillAmount =  requiredHoldTimeCurrent / requiredHoldTimeCurrent;
+        
 
     }
 
 
 
-    // Use this for initialization
- //   void Start () {
-		
-//	}
-
-
-	
+   
 	// Update is called once per frame
 	public void Update () 
     {
