@@ -2,47 +2,82 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpriteAnimator : MonoBehaviour 
 {
-private AAnimation head;
- private AAnimation currentAnimation;
+public AAnimation[] animations;	
+ public AAnimation currentAnimation;
  private SpriteRenderer spriteRenderer;
- public GameObject player;
+
+[System.Serializable]
+public class AAnimation
+{
+    public Sprite[] sprites;
+	public AAnimation previousAnimation;
+	public AAnimation nextAnimation;
+
+    public float interval;
+    [HideInInspector]public float time;
+	[HideInInspector]public int currentSpriteFrame;
+    
+    
+	
+
+}
 	// Use this for initialization
 	void Start () 
 	{
-		spriteRenderer = player.GetComponent<SpriteRenderer>();
-		head = currentAnimation;
+		LinkedAnimations();
+		currentAnimation = animations[0];
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		LinkedList(currentAnimation);
-		
-		if (currentAnimation != null)
-        {
-            currentAnimation.timer += Time.deltaTime;
-            if (currentAnimation.timer > currentAnimation.interval )
+			currentAnimation.time += Time.deltaTime;
+			
+            if (currentAnimation.time > currentAnimation.interval )
             {
-                currentAnimation.timer = 0;
-                currentAnimation.currentFrameIndex++;
-
-                if (currentAnimation.currentFrameIndex < currentAnimation.sprites.Count - 1)
-                    spriteRenderer.sprite = currentAnimation.sprites[currentAnimation.currentFrameIndex];
-                else
-                {
-                    
-                    currentAnimation.currentFrameIndex = 0;
+				currentAnimation.currentSpriteFrame++;
+				if (currentAnimation.currentSpriteFrame <= currentAnimation.sprites.Length - 1)
+				{
+					spriteRenderer.sprite = currentAnimation.sprites[currentAnimation.currentSpriteFrame];
+					currentAnimation.time = 0;
                 }
-
-           
-            }
-		}
-	}
-	void LinkedList(AAnimation animation)
-	{
+                
+				if(Input.GetKeyDown(KeyCode.Q))
+				{
+				
+				spriteRenderer.sprite = currentAnimation.sprites[0];
+				currentAnimation.time = 0;
+				currentAnimation.currentSpriteFrame = 0;
+                
+                
+				}
+					
+                if(Input.GetKeyDown(KeyCode.K))
+                {
+                currentAnimation = currentAnimation.nextAnimation;
+				spriteRenderer.sprite = currentAnimation.sprites[0];
+                currentAnimation.time = 0;
+				currentAnimation.currentSpriteFrame = 0;
+                    
+				}
+			}
 		
+	}
+
+	void LinkedAnimations()
+	{
+		animations[0].previousAnimation = animations[animations.Length - 1];
+		animations[animations.Length - 1].nextAnimation = animations[0];
+
+		for(int i = 0; i < animations.Length - 1; i++)
+			animations[i].nextAnimation = animations[i + 1];
+		for(int i = animations.Length - 1; i > 1; i--)
+			animations[i].previousAnimation = animations[i - 1];
 	}
 
 
